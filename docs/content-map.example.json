@@ -1,0 +1,14 @@
+{
+  "accounts": {
+    "accountA": {
+      "file": "./contents/a.md",
+      "title": "A 标题",
+      "cover": "./covers/a.png",
+      "platforms": ["zhihu", "juejin"]
+    },
+    "accountB": {
+      "file": "./contents/b.md",
+      "platforms": ["weibo"]
+    }
+  }
+}
