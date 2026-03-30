@@ -1,0 +1,4 @@
+interface:
+  display_name: "XHS CDP Publish"
+  short_description: "Automate Xiaohongshu publish via CDP scripts"
+  default_prompt: "Use the bundled scripts to upload images, fill content, and click publish via CDP."
