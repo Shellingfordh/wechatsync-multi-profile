@@ -9,11 +9,21 @@ import crypto from 'crypto';
 import http from 'http';
 import https from 'https';
 
-const IMG_URL = 'https://pic3.zhimg.com/v2-dbb64f38b044e9e339bbce31d2ece96c_1440w.jpg';
+const DEFAULT_IMG_URL = 'https://pic3.zhimg.com/v2-dbb64f38b044e9e339bbce31d2ece96c_1440w.jpg';
 const TEMP_DIR = '/Users/majia/temp_images';
 const PORT = 9222;
-const CONTENT = '一张舒服的清透风景，留给今天的心情。光线很柔，细节干净，适合做壁纸或背景。#美图 #壁纸 #风景';
+const DEFAULT_CONTENT = '一张舒服的清透风景，留给今天的心情。光线很柔，细节干净，适合做壁纸或背景。#美图 #壁纸 #风景';
 const DEBUG = true;
+
+function parseArgs(argv){
+  const out = {};
+  for (let i=2;i<argv.length;i++){
+    const a = argv[i];
+    if (a === '--content' && argv[i+1]) { out.content = argv[++i]; continue; }
+    if ((a === '--image' || a === '--image-url') && argv[i+1]) { out.image = argv[++i]; continue; }
+  }
+  return out;
+}
 
 if (!fs.existsSync(TEMP_DIR)) fs.mkdirSync(TEMP_DIR, { recursive: true });
 
@@ -79,7 +89,18 @@ async function connectWS(wsUrl){
 const sleep = (ms)=>new Promise(r=>setTimeout(r,ms));
 
 async function main(){
-  const imgPath = await resolveImage(IMG_URL);
+  const args = parseArgs(process.argv);
+  const contentText = args.content || DEFAULT_CONTENT;
+  let imgPath = '';
+  if (args.image) {
+    if (args.image.startsWith('http://') || args.image.startsWith('https://')) {
+      imgPath = await resolveImage(args.image);
+    } else {
+      imgPath = args.image;
+    }
+  } else {
+    imgPath = await resolveImage(DEFAULT_IMG_URL);
+  }
   const list = await cdpRequest('/json/list');
   let target = list.find(t => t.url && t.url.includes('creator.xiaohongshu.com/publish'));
   if (!target){
@@ -128,7 +149,7 @@ async function main(){
 
   // Fill content
   await send('Runtime.evaluate', { expression: `(() => {
-    const text = ${JSON.stringify(CONTENT)};
+    const text = ${JSON.stringify(contentText)};
     let el = document.querySelector('textarea');
     if (!el) el = document.querySelector('[contenteditable="true"]');
     if (!el) return false;

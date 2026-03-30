@@ -71,6 +71,9 @@ Bundled helper scripts for Xiaohongshu CDP automation are available under `artif
 Notes:
 - These scripts assume a running Edge/Chrome with `--remote-debugging-port=9222`.
 - Use them on the creator publish page: `https://creator.xiaohongshu.com/publish/publish?source=official`.
+- `mj_xhs_cdp_upload.js` supports args:
+  - `--content "..."` to set text
+  - `--image "/abs/path.jpg"` or `--image "https://..."` to set image
 
 ### Analysis (external references)
 - MultiPost app bundle analysis: `analysis/multipost_analysis.md`
@@ -159,6 +162,9 @@ node packages/cli/dist/index.js wechat --script ~/Downloads/wechat.py
 说明：
 - 需要浏览器以 `--remote-debugging-port=9222` 启动。
 - 目标页面：`https://creator.xiaohongshu.com/publish/publish?source=official`。
+- `mj_xhs_cdp_upload.js` 支持参数：
+  - `--content "..."` 设置文案
+  - `--image "/绝对路径.jpg"` 或 `--image "https://..."` 设置图片
 
 ### 外部项目分析
 - MultiPost 桌面应用分析：`analysis/multipost_analysis.md`
