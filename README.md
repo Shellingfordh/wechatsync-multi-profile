@@ -62,6 +62,16 @@ node packages/cli/dist/index.js wechat --script ~/Downloads/wechat.py
 - Current state analysis: `docs/analysis-current.md`
 - External projects analysis: `docs/external-projects-analysis.md`
 
+### Utilities (Xiaohongshu CDP)
+Bundled helper scripts for Xiaohongshu CDP automation are available under `artifacts/`:
+- `artifacts/mj_xhs_cdp_upload.js` (click “上传图文”, upload image, fill content)
+- `artifacts/mj_xhs_click_publish.js` (click “发布”)
+- `artifacts/xhs_cdp_scripts.zip` (zip bundle of the above)
+
+Notes:
+- These scripts assume a running Edge/Chrome with `--remote-debugging-port=9222`.
+- Use them on the creator publish page: `https://creator.xiaohongshu.com/publish/publish?source=official`.
+
 ### Analysis (external references)
 - MultiPost app bundle analysis: `analysis/multipost_analysis.md`
 - OpenWrite extension analysis: `analysis/openwrite_2.1.18_analysis.md`
@@ -139,6 +149,16 @@ node packages/cli/dist/index.js wechat --script ~/Downloads/wechat.py
 - Codex 提示词模板：`docs/codex-prompt-templates.md`
 - 现状分析：`docs/analysis-current.md`
 - 外部项目分析汇总：`docs/external-projects-analysis.md`
+
+### 工具脚本（小红书 CDP）
+小红书 CDP 辅助脚本位于 `artifacts/`：
+- `artifacts/mj_xhs_cdp_upload.js`（点击“上传图文”、上传图片、填写文案）
+- `artifacts/mj_xhs_click_publish.js`（点击“发布”）
+- `artifacts/xhs_cdp_scripts.zip`（上述脚本打包）
+
+说明：
+- 需要浏览器以 `--remote-debugging-port=9222` 启动。
+- 目标页面：`https://creator.xiaohongshu.com/publish/publish?source=official`。
 
 ### 外部项目分析
 - MultiPost 桌面应用分析：`analysis/multipost_analysis.md`
