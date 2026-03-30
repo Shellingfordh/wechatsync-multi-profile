@@ -75,6 +75,16 @@ Notes:
   - `--content "..."` to set text
   - `--image "/abs/path.jpg"` or `--image "https://..."` to set image
 
+### Utilities (Douyin Playwright)
+Updated Douyin MCP Playwright scripts are bundled under `artifacts/`:
+- `artifacts/douyin-mcp/server-playwright.js`
+- `artifacts/douyin-mcp/login-playwright.js`
+- `artifacts/douyin-mcp.zip`
+
+Notes:
+- `login-playwright.js` is modified to **not auto-refresh** and waits for you to press Enter after login.
+- `server-playwright.js` includes an explicit publish button selector (`button.button-dhlUZE.primary-cECiOJ.fixed-J9O8Yw`) and optional pause before publish via `PAUSE_BEFORE_PUBLISH=1`.
+
 ### Analysis (external references)
 - MultiPost app bundle analysis: `analysis/multipost_analysis.md`
 - OpenWrite extension analysis: `analysis/openwrite_2.1.18_analysis.md`
@@ -165,6 +175,16 @@ node packages/cli/dist/index.js wechat --script ~/Downloads/wechat.py
 - `mj_xhs_cdp_upload.js` 支持参数：
   - `--content "..."` 设置文案
   - `--image "/绝对路径.jpg"` 或 `--image "https://..."` 设置图片
+
+### 工具脚本（抖音 Playwright）
+抖音 MCP Playwright 脚本打包在 `artifacts/`：
+- `artifacts/douyin-mcp/server-playwright.js`
+- `artifacts/douyin-mcp/login-playwright.js`
+- `artifacts/douyin-mcp.zip`
+
+说明：
+- `login-playwright.js` 已改为**不自动刷新**，登录后手动按 Enter 保存 cookies。
+- `server-playwright.js` 已加入发布按钮 selector（`button.button-dhlUZE.primary-cECiOJ.fixed-J9O8Yw`），并支持 `PAUSE_BEFORE_PUBLISH=1` 在发布前暂停。
 
 ### 外部项目分析
 - MultiPost 桌面应用分析：`analysis/multipost_analysis.md`
